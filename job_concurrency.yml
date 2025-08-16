@@ -19,13 +19,3 @@ jobs:
 
       - name: Docker Publish
         run: echo docker push $CONTAINER_REGISTRY/${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
-
-  deploy:
-    needs: docker
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: docker run
-        run: |
-          echo docker run -d -p 8080:80 $CONTAINER_REGISTRY/${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
-          sleep 600s
