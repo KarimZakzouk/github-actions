@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: install cowsay program
-        run: sudo apt-get install cowsay -y
+        run: sudo pacman -S cowsay --noconfirm
 
       - name: Execute cowsay CMD
         run: cowsay -f dragon "Run for cover, iam a Dragon....RAWR" >> dragon.txt
