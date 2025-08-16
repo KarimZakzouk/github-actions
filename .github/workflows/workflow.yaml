@@ -1,20 +1,45 @@
-name: my first workflow
-on:
-  push: # pull_request, push, workflow_dispatch
-    branches:
-      - main
+name: Cowsay
+
+on: push
+
 jobs:
-  first_job:
-    
+  Ascii_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: install cowsay program
+        run: sudo apt-get install cowsay -y
+
+      - name: Execute cowsay CMD
+        run: cowsay -f dragon "Run for cover, iam a Dragon....RAWR" >> dragon.txt
+
+      - name: Test File Exists
+        run: grep -i "dragon" dragon.txt
+
+      - name: Read File
+        run: cat dragon.txt
+
+      - name: checkout repo files
+        run: ls
+  Ascii_job_self_hosted:
     runs-on: self-hosted
     steps:
-      - name: Run a one-line script
-        run: pwd
-  second_job:
-    runs-on: self-hosted
-    needs: first_job
-    steps:
-      - name: Run a two-line script
-        run: |
-          echo Hello, world!
-          echo This is a second line.
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: install cowsay program
+        run: sudo apt-get install cowsay -y
+
+      - name: Execute cowsay CMD
+        run: cowsay -f dragon "Run for cover, iam a Dragon....RAWR" >> dragon.txt
+
+      - name: Test File Exists
+        run: grep -i "dragon" dragon.txt
+
+      - name: Read File
+        run: cat dragon.txt
+
+      - name: checkout repo files 
+        run: ls
