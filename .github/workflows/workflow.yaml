@@ -5,12 +5,14 @@ on:
       - main
 jobs:
   first_job:
+    
     runs-on: self-hosted
     steps:
       - name: Run a one-line script
         run: echo Hello, world!
   second_job:
     runs-on: self-hosted
+    needs: first_job
     steps:
       - name: Run a two-line script
         run: |
