@@ -1,0 +1,11 @@
+name: my first workflow
+on:
+  push: # pull_request, push, workflow_dispatch
+    branches:
+      - main
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
